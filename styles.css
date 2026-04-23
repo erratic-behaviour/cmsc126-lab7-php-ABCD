@@ -1,0 +1,33 @@
+@import url('https://googleapis.com');
+
+body {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
+    background: rgb(223, 223, 223);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#form-container {
+    border: 2px solid gray;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-sections {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+#form-header  {
+    background: rgb(203, 19, 43);
+    color: rgb(240, 230, 212);
+}
