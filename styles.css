@@ -58,6 +58,68 @@ main {
     flex-direction: column;
 }
 
+#form-header  {
+    background: rgb(203, 19, 43);
+    color: rgb(240, 230, 212);
+}
+
+#completed {
+    background: rgb(203, 19, 43);
+    color: rgb(240, 230, 212);
+    padding: 20px;
+    text-align: center;
+} 
+
+
+#drop-area {
+    border: 3px dashed #777171;
+    padding: 50px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.required {
+    color: crimson;
+}
+
+.submit-btn {
+    background: rgb(203, 19, 43);
+    color: rgb(240, 230, 212);
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+    width: max-content;
+    margin: auto;
+    /*DONT TOUCH MIGHT BREAK*/
+}
+
+
+.return-btn {
+    background: rgb(54, 9, 15);
+    color: rgb(240, 230, 212);
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+    width: max-content;
+    margin: auto;
+    /*DONT TOUCH MIGHT BREAK*/
+}
+
+.note{
+    font-size: 12px;
+    color: gray;
+}
+
+.preview-img {
+    max-width: 100px;
+    max-height: 100px;
+    margin: 10px auto 0;
+    display: block;
+    border: 3px dashed rgb(203, 19, 43);
 #search-student-body form {
     display: flex;
     flex-direction: column;

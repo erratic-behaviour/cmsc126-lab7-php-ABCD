@@ -1,41 +1,3 @@
-<?php
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $conn = new mysqli("localhost", "root", "", "lab_7");
-
-    if ($_POST["action"] === "insert") {
-        $id = $_POST["student_id"];
-        $name = $_POST["name"];
-        $age = $_POST["age"];
-        $email = $_POST["email"];
-        $course = $_POST["course"];
-        $year = $_POST["year_level"];
-        $grad = isset($_POST["graduation_status"]) ? 1 : 0;
-
-        // handle image upload
-        if (!file_exists("uploads/")) mkdir("uploads/");
-        $image_path = "uploads/" . basename($_FILES["image"]["name"]);
-        move_uploaded_file($_FILES["image"]["tmp_name"], $image_path);
-
-        $conn->query("INSERT INTO top_level (Student_id, Name, Age, Image) 
-            VALUES ($id, '$name', $age, '$image_path')");
-        $conn->query("INSERT INTO lower_level (Student_id, Email, Course, Year_level, Graduation_status) 
-            VALUES ($id, '$email', '$course', $year, $grad)");
-
-        echo "<script>alert('Student registered successfully!');</script>";
-
-    } else if ($_POST["action"] === "delete") {
-        $id = $_POST["student_id"];
-        $conn->query("DELETE FROM top_level WHERE Student_id = $id");
-        $conn->query("DELETE FROM lower_level WHERE Student_id = $id");
-
-        echo "<script>alert('Student deleted successfully!');</script>";
-    }
-
-    $conn->close();
-}
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -57,6 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <p>All fields marked * are required</p>
                 </div>
                 
+                <form method="POST" id="student-form" action="insert_delete_feature.php" enctype="multipart/form-data">
 
                 <!-- FORM MAIN BODY -->
                 <div id="form-body">
@@ -64,31 +27,29 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <!-- PERSONAL INFORMATION SECTION -->
                     <div id="personal-info-section" class="gen-sections">
                         <h3>Personal Information</h3>
-                        <label for="name-input">Name <span>*</span></label>
-                        <input type="text" name="name" id="name-input" placeholder="Enter student name">
+                        <label for="name-input">Name <span class="required">*</span></label>
+                        <input type="text" name="name" id="name-input" placeholder="Enter student name" required>
                         
-                        <label for="age-input">Age <span>*</span></label>
-                        <input type="number" name="age" id="age-input" placeholder="Enter student age (0-99)">
+                        <label for="age-input">Age <span class="required">*</span></label>
+                        <input type="number" name="age" id="age-input" min="0" max="99" placeholder="Enter student age (0-99)" required>
                         
-                        <label for="email-input">E-mail <span>*</span></label>
-                        <input type="email" name="email" id="email-input" placeholder="Enter student e-mail">
-                        <p>Must be a valid e-mail address (max 40 characters).</p>
-                        
+                        <label for="email-input">E-mail <span class="required">*</span></label>
+                        <p class="note">Must be a valid e-mail address (max 40 characters).</p>
+                        <input type="email" name="email" id="email-input" placeholder="Enter student e-mail" required>
                     </div>
                     
                     
                     <div id="academic-info-panel" class="gen-sections">
                         <h3>Academic Information</h3>
-                        <label for="course-select">Course <span>*</span></label>
-                        <select id="course-select" name="course">
-                            <option>COURSE 1</option>
-                            <option>COURSE 2</option>
-                            <option>COURSE 3</option>
-                            <option>COURSE 4</option>
+                        <label for="course-select">Course <span class="required">*</span></label>
+                        <select id="course-select" name="course" required>
+                            <option>COMPUTER SCIENCE</option>
+                            <option>MICROBIOLOGY</option>
+                            <option>COMPUH TER ENGINEERING</option>
                         </select>
                         
-                        <label for="year-level-select">Year Level <span>*</span></label>
-                        <select id="year-level-select" name="year_level">
+                        <label for="year-level-select">Year Level <span class="required">*</span></label>
+                        <select id="year-level-select" name="year_level" required>
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
@@ -96,19 +57,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             <option>Nth</option>
                         </select>
                         
-                        <p>Graduating this year? </p><span>*</span>
+                        <p>Graduating this year? (leave unchecked if not)<span class="required">*</span></p>
                         <input type="checkbox" id="grad-status-input" name="graduation_status">
                     </div>
                     
                     
-                    <div id="profile-photo-section">
-                        <h3>Profile Photo</h3>
-                        <p>Profile Image </p><span>*</span>
-
+                    <div id="profile-photo-section" class="form-sections">
+                        <h3>Profile Photo <span class="required">*</span></h3>
+                        <div id="drop-area">
+                            <p>Drag and drop an image here, or click to select a file.</p>
+                            <input id="image-drop-inp" type="file" name="profile_photo" accept="image/*" required>
+                        </div>
+                        <div id="preview"></div>
+                        
                     </div>
-
-                    <input type="submit">
+                    
+                    <br/>
+                    <button type="submit" name="action" value="insert" class="submit-btn">Submit</button>
+                    <br/>
                 </div>
+                </form>
 
             <!-- END OF STUDENT REGISTRATION FORM -->
             </div>
@@ -124,8 +92,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <div id="search-student-body" class="gen-sections">
                     <form method="GET" action = "search_studentID.php">
                         <label for="student-number">Search Student Number:</label>
-                        <input type="text" name="student_number" id="student-number" placeholder="Enter student number">
-                        <button type="submit" onclick = "searchStudent()">Search</button>
+                        <input type="text" name="search" id="student-number" placeholder="Enter student number">
+                        <button type="submit">Search</button>
                     </form>
                 </div>
 
@@ -139,6 +107,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $plain  = strip_tags($output);
         ?>
         <script>console.log(<?= json_encode($plain) ?>)</script>
-        <script src = "search_studentID.js"></script>
+        <script src = "image_handler.js"></script>
     </body>
 </html>
