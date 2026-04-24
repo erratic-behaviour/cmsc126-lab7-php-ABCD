@@ -120,6 +120,8 @@ main {
     margin: 10px auto 0;
     display: block;
     border: 3px dashed rgb(203, 19, 43);
+}
+
 #search-student-body form {
     display: flex;
     flex-direction: column;
