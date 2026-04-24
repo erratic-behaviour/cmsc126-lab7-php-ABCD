@@ -50,9 +50,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         
         
         <main>
-            <div id="form-container">
+            <div id="form-container" class="containers">
                 <!-- FORM HEADER -->
-                <div id="form-header" class="form-sections">
+                <div id="form-header" class="container-header">
                     <h1>Student Registration</h1>
                     <p>All fields marked * are required</p>
                 </div>
@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <div id="form-body">
 
                     <!-- PERSONAL INFORMATION SECTION -->
-                    <div id="personal-info-section" class="form-sections">
+                    <div id="personal-info-section" class="gen-sections">
                         <h3>Personal Information</h3>
                         <label for="name-input">Name <span>*</span></label>
                         <input type="text" name="name" id="name-input" placeholder="Enter student name">
@@ -77,13 +77,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     </div>
                     
                     
-                    <div id="academic-info-panel" class="form-sections">
+                    <div id="academic-info-panel" class="gen-sections">
                         <h3>Academic Information</h3>
                         <label for="course-select">Course <span>*</span></label>
                         <select id="course-select" name="course">
                             <option>COURSE 1</option>
                             <option>COURSE 2</option>
                             <option>COURSE 3</option>
+                            <option>COURSE 4</option>
                         </select>
                         
                         <label for="year-level-select">Year Level <span>*</span></label>
@@ -97,7 +98,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         
                         <p>Graduating this year? </p><span>*</span>
                         <input type="checkbox" id="grad-status-input" name="graduation_status">
-                        <label for="grad-status-input"></label>
                     </div>
                     
                     
@@ -113,14 +113,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <!-- END OF STUDENT REGISTRATION FORM -->
             </div>
 
-
+            
             <!-- SEARCH STUDENT -->
-            <div id="search-student-body">
-                <form method="GET" action = "search_studentID.php">
-                    <label for="student-number">Search Student Number:</label>
-                    <input type="text" name="student_number" id="student-number" placeholder="Enter student number">
-                    <button type="submit" onclick = "searchStudent()">Search</button>
-                </form>
+            <div id="search-container" class="containers">
+                <!-- SEARcH HEADER -->
+                <div class="container-header">
+                    <h2>Search Student</h2>
+                </div>
+
+                <div id="search-student-body" class="gen-sections">
+                    <form method="GET" action = "search_studentID.php">
+                        <label for="student-number">Search Student Number:</label>
+                        <input type="text" name="student_number" id="student-number" placeholder="Enter student number">
+                        <button type="submit" onclick = "searchStudent()">Search</button>
+                    </form>
+                </div>
+
             </div>
         
         </main>
