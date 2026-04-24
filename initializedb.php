@@ -33,7 +33,9 @@
         Email VARCHAR(40) NOT NULL,
         Course VARCHAR(40) NOT NULL,
         Year_level INT(1) UNSIGNED NOT NULL,
-        Graduation_status BOOLEAN NOT NULL)";
+        Graduation_status BOOLEAN NOT NULL,
+        FOREIGN KEY (Student_id) REFERENCES top_level(Student_id) ON DELETE CASCADE
+    )";
 
     if ($conn->query($top_level) === TRUE) {
         echo "Top level table created successfully". "<br/>";

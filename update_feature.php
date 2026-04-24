@@ -21,8 +21,7 @@
         $year   =   $_POST["year_level"];
         $grad   =   $_POST["graduation_status"] ? 1 : 0;
     
-
-        // prepared statements to avoid SQL injections
+        // prepared statements to avoid SQL injections -
         $stmt   = $conn -> prepare("UPDATE top_level
                                     SET Name=?, Age=?, Image=?
                                     WHERE Student_id=?");
@@ -34,7 +33,5 @@
 
         echo "<script>alert('Student updated successfully')</script>";
     }
-
-
 ?>
 
