@@ -36,37 +36,91 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <link rel="stylesheet" href="styles.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="./styles.css">
+        
+        <title>Register Student Details</title>
     </head>
     <body>
-        Status: <i><?php include 'initializedb.php'; ?></i>
-        <form method="POST" action="insert_delete_feature.php" enctype="multipart/form-data">
-            <input type="number" name="student_id" placeholder="Student ID" required><br>
-            <input type="text" name="name" placeholder="Name" maxlength="40" required><br>
-            <input type="number" name="age" placeholder="Age" min="0" max="99" required><br>
-            <input type="email" name="email" placeholder="Email" maxlength="40" required><br>
-            <input type="text" name="course" placeholder="Course" maxlength="40" required><br>
-            <select name="year_level" required>
-                <option value="">Select Year Level</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-            </select><br>
-            <label>
-                <input type="checkbox" name="graduation_status"> Graduating this year?
-            </label><br>
-            <input type="file" name="image" accept="image/*" required><br><br>
+        <!-- Server status -->
+        Welcome<br/>
+        Status: <i ><?php include 'initializedb.php' ?></i>
+        /*form here */
+        
+        <main>
+            <div id="form-container">
+                <!-- FORM HEADER -->
+                <div id="form-header" class="form-sections">
+                    <h1>Student Registration</h1>
+                    <p>All fields marked * are required</p>
+                </div>
+                
 
-            <button type="submit" name="action" value="insert">Insert</button>
-        </form>
+                <!-- FORM MAIN BODY -->
+                <div id="form-body">
 
-        <h2>Delete Student</h2>
-        <form method="POST" action="insert_delete_feature.php">
-            <input type="number" name="student_id" placeholder="Student ID" required>
-            <button type="submit" name="action" value="delete">Delete</button>
-        </form>
+                    <!-- PERSONAL INFORMATION SECTION -->
+                    <div id="personal-info-section" class="form-sections">
+                        <h3>Personal Information</h3>
+                        <label for="name-input">Name <span>*</span></label>
+                        <input type="text" id="name-input" placeholder="Enter student name">
+                        
+                        <label for="age-input">Age <span>*</span></label>
+                        <input type="number" id="age-input" placeholder="Enter student age (0-99)">
+                        
+                        <label for="email-input">E-mail <span>*</span></label>
+                        <input type="email" id="email-input" placeholder="Enter student e-mail">
+                        <p>Must be a valid e-mail address (max 40 characters).</p>
+                        
+                    </div>
+                    
+                    
+                    <div id="academic-info-panel" class="form-sections">
+                        <h3>Academic Information</h3>
+                        <label for="course-select">Course <span>*</span></label>
+                        <select id="course-select">
+                            <option>COURSE 1</option>
+                            <option>COURSE 2</option>
+                            <option>COURSE 3</option>
+                        </select>
+                        
+                        <label for="year-level-select">Year Level <span>*</span></label>
+                        <select id="year-level-select">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>Nth</option>
+                        </select>
+                        
+                        <p>Graduating this year? </p><span>*</span>
+                        <input type="checkbox" id="grad-status-input">
+                        <label for="grad-status-input"></label>
+                    </div>
+                    
+                    
+                    <div id="profile-photo-section">
+                        <h3>Profile Photo</h3>
+                        <p>Profile Image </p><span>*</span>
+
+                    </div>
+
+                    <input type="submit">
+                </div>
+
+            <!-- END OF STUDENT REGISTRATION FORM -->
+            </div>
+
+
+        <!-- SEARCH STUDENT -->
+        <div id="search-student-body">
+
+        </div>
+        
+    </main>
     </body>
 </html>
