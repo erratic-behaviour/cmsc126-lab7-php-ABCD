@@ -116,7 +116,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             <!-- SEARCH STUDENT -->
             <div id="search-student-body">
-
+                <form method="GET" action = "search_studentID.php">
+                    <label for="student-number">Search Student Number:</label>
+                    <input type="text" name="student_number" id="student-number" placeholder="Enter student number">
+                    <button type="submit" onclick = "searchStudent()">Search</button>
+                </form>
             </div>
         
         </main>
@@ -127,5 +131,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $plain  = strip_tags($output);
         ?>
         <script>console.log(<?= json_encode($plain) ?>)</script>
+        <script src = "search_studentID.js"></script>
     </body>
 </html>
