@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </head>
     <body>
         Status: <i><?php include 'initializedb.php'; ?></i>
-        <form method="POST" enctype="multipart/form-data">
+        <form method="POST" action="insert_delete_feature.php" enctype="multipart/form-data">
             <input type="number" name="student_id" placeholder="Student ID" required><br>
             <input type="text" name="name" placeholder="Name" maxlength="40" required><br>
             <input type="number" name="age" placeholder="Age" min="0" max="99" required><br>
@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </form>
 
         <h2>Delete Student</h2>
-        <form method="POST">
+        <form method="POST" action="insert_delete_feature.php">
             <input type="number" name="student_id" placeholder="Student ID" required>
             <button type="submit" name="action" value="delete">Delete</button>
         </form>
