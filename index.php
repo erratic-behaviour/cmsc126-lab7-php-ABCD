@@ -17,9 +17,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         move_uploaded_file($_FILES["image"]["tmp_name"], $image_path);
 
         $conn->query("INSERT INTO top_level (Student_id, Name, Age, Image) 
-                      VALUES ($id, '$name', $age, '$image_path')");
+            VALUES ($id, '$name', $age, '$image_path')");
         $conn->query("INSERT INTO lower_level (Student_id, Email, Course, Year_level, Graduation_status) 
-                      VALUES ($id, '$email', '$course', $year, $grad)");
+            VALUES ($id, '$email', '$course', $year, $grad)");
 
         echo "<script>alert('Student registered successfully!');</script>";
 
@@ -35,6 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -46,10 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <title>Register Student Details</title>
     </head>
     <body>
-        <!-- Server status -->
-        Welcome<br/>
-        Status: <i ><?php include 'initializedb.php' ?></i>
-        /*form here */
+        
         
         <main>
             <div id="form-container">
@@ -116,11 +114,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
 
 
-        <!-- SEARCH STUDENT -->
-        <div id="search-student-body">
+            <!-- SEARCH STUDENT -->
+            <div id="search-student-body">
 
-        </div>
+            </div>
         
-    </main>
+        </main>
+        <?php
+            ob_start();
+            include 'initializedb.php';
+            $output = ob_get_clean();
+            $plain  = strip_tags($output);
+        ?>
+        <script>console.log(<?= json_encode($plain) ?>)</script>
     </body>
 </html>

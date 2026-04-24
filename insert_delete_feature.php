@@ -1,4 +1,7 @@
+
 <?php
+    // FILENAME: insert_delete_feature.php
+    
     $conn = new mysqli("localhost", "root", "", "lab_7");
 
     if ($conn->connect_error) {
