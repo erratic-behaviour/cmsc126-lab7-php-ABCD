@@ -65,13 +65,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <div id="personal-info-section" class="form-sections">
                         <h3>Personal Information</h3>
                         <label for="name-input">Name <span>*</span></label>
-                        <input type="text" id="name-input" placeholder="Enter student name">
+                        <input type="text" name="name" id="name-input" placeholder="Enter student name">
                         
                         <label for="age-input">Age <span>*</span></label>
-                        <input type="number" id="age-input" placeholder="Enter student age (0-99)">
+                        <input type="number" name="age" id="age-input" placeholder="Enter student age (0-99)">
                         
                         <label for="email-input">E-mail <span>*</span></label>
-                        <input type="email" id="email-input" placeholder="Enter student e-mail">
+                        <input type="email" name="email" id="email-input" placeholder="Enter student e-mail">
                         <p>Must be a valid e-mail address (max 40 characters).</p>
                         
                     </div>
@@ -80,14 +80,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <div id="academic-info-panel" class="form-sections">
                         <h3>Academic Information</h3>
                         <label for="course-select">Course <span>*</span></label>
-                        <select id="course-select">
+                        <select id="course-select" name="course">
                             <option>COURSE 1</option>
                             <option>COURSE 2</option>
                             <option>COURSE 3</option>
                         </select>
                         
                         <label for="year-level-select">Year Level <span>*</span></label>
-                        <select id="year-level-select">
+                        <select id="year-level-select" name="year_level">
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
@@ -96,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         </select>
                         
                         <p>Graduating this year? </p><span>*</span>
-                        <input type="checkbox" id="grad-status-input">
+                        <input type="checkbox" id="grad-status-input" name="graduation_status">
                         <label for="grad-status-input"></label>
                     </div>
                     
