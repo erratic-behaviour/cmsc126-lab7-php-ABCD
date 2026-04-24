@@ -12,9 +12,9 @@
         
         
         <main>
-            <div id="form-container">
+            <div id="form-container" class="containers">
                 <!-- FORM HEADER -->
-                <div id="form-header" class="form-sections">
+                <div id="form-header" class="container-header">
                     <h1>Student Registration</h1>
                     <p>All fields marked * are required</p>
                 </div>
@@ -25,7 +25,7 @@
                 <div id="form-body">
 
                     <!-- PERSONAL INFORMATION SECTION -->
-                    <div id="personal-info-section" class="form-sections">
+                    <div id="personal-info-section" class="gen-sections">
                         <h3>Personal Information</h3>
                         <label for="name-input">Name <span class="required">*</span></label>
                         <input type="text" name="name" id="name-input" placeholder="Enter student name" required>
@@ -39,7 +39,7 @@
                     </div>
                     
                     
-                    <div id="academic-info-panel" class="form-sections">
+                    <div id="academic-info-panel" class="gen-sections">
                         <h3>Academic Information</h3>
                         <label for="course-select">Course <span class="required">*</span></label>
                         <select id="course-select" name="course" required>
@@ -59,7 +59,6 @@
                         
                         <p>Graduating this year? (leave unchecked if not)<span class="required">*</span></p>
                         <input type="checkbox" id="grad-status-input" name="graduation_status">
-                        <label for="grad-status-input"></label>
                     </div>
                     
                     
@@ -82,14 +81,22 @@
             <!-- END OF STUDENT REGISTRATION FORM -->
             </div>
 
-
+            
             <!-- SEARCH STUDENT -->
-            <div id="search-student-body">
-                <form method="GET" action = "search_studentID.php">
-                    <label for="student-number">Search Student Number:</label>
-                    <input type="text" name="search" id="student-number" placeholder="Enter student number">
-                    <button type="submit">Search</button>
-                </form>
+            <div id="search-container" class="containers">
+                <!-- SEARcH HEADER -->
+                <div class="container-header">
+                    <h2>Search Student</h2>
+                </div>
+
+                <div id="search-student-body" class="gen-sections">
+                    <form method="GET" action = "search_studentID.php">
+                        <label for="student-number">Search Student Number:</label>
+                        <input type="text" name="search" id="student-number" placeholder="Enter student number">
+                        <button type="submit">Search</button>
+                    </form>
+                </div>
+
             </div>
         
         </main>

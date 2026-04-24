@@ -1,28 +1,58 @@
 @import url('https://googleapis.com');
 
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
     font-weight: 100;
     font-style: normal;
     background: rgb(223, 223, 223);
+    margin: 0;
 }
 
 main {
     display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;;
+    padding: 40px;
+    gap: 12px;
+    height: 100vh;
+}
+
+.containers {
+    border: 1.5px solid gray;
+    border-radius: 20px;
+    display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+    overflow-y: auto;
 }
 
 #form-container {
-    border: 2px solid gray;
-    display: flex;
-    flex-direction: column;
+    flex: 1.4; min-width: 0;
 }
 
-.form-sections {
+#search-container {
+    flex: 1;
+    min-width: 0;
+    max-width: 380px;
+}
+
+.container-header {
+    background: rgb(108, 25, 25);
+    color: rgb(255, 242, 219);
+    padding: 12px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.gen-sections {
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -90,4 +120,8 @@ main {
     margin: 10px auto 0;
     display: block;
     border: 3px dashed rgb(203, 19, 43);
+#search-student-body form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
