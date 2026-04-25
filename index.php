@@ -62,61 +62,72 @@
                 
 
                 <form method="POST" id="student-form" action="insert_delete_feature.php" enctype="multipart/form-data">
-                <!-- FORM MAIN BODY -->
-                <div id="form-body">
+                    <!-- FORM MAIN BODY -->
+                    <div id="form-body">
 
-                    <!-- PERSONAL INFORMATION SECTION -->
-                    <div id="personal-info-section" class="gen-sections">
-                        <h3>Personal Information</h3>
-                        <label for="name-input">Name <span class="required">*</span></label>
-                        <input type="text" name="name" id="name-input" placeholder="Enter student name" required>
-                        
-                        <label for="age-input">Age <span class="required">*</span></label>
-                        <input type="number" name="age" id="age-input" min="0" max="99" placeholder="Enter student age (0-99)" required>
-                        
-                        <label for="email-input">E-mail <span class="required">*</span></label>
-                        <p class="note">Must be a valid e-mail address (max 40 characters).</p>
-                        <input type="email" name="email" id="email-input" placeholder="Enter student e-mail" required>
-                    </div>
-                    
-                    
-                    <div id="academic-info-panel" class="gen-sections">
-                        <h3>Academic Information</h3>
-                        <label for="course-select">Course <span class="required">*</span></label>
-                        <select id="course-select" name="course" required>
-                            <option>COMPUTER SCIENCE</option>
-                            <option>MICROBIOLOGY</option>
-                            <option>COMPUH TER ENGINEERING</option>
-                        </select>
-                        
-                        <label for="year-level-select">Year Level <span class="required">*</span></label>
-                        <select id="year-level-select" name="year_level" required>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>Nth</option>
-                        </select>
-                        
-                        <p>Graduating this year? (leave unchecked if not)<span class="required">*</span></p>
-                        <input type="checkbox" id="grad-status-input" name="graduation_status">
-                    </div>
-                    
-                    
-                    <div id="profile-photo-section" class="form-sections">
-                        <h3>Profile Photo <span class="required">*</span></h3>
-                        <div id="drop-area">
-                            <p>Drag and drop an image here, or click to select a file.</p>
-                            <input id="image-drop-inp" type="file" name="profile_photo" accept="image/*" required>
+                        <!-- PERSONAL INFORMATION SECTION -->
+                        <div id="personal-info-section" class="gen-sections">
+                            <h3>Personal Information</h3>
+                            
+                            <?php if ($is_update): ?>
+                                <label>Student ID: <strong><?php echo $row['Student_id']; ?></strong></label>
+                                <input type="hidden" name="student_id" value="<?php echo $row['Student_id']; ?>">
+                            <?php else: ?>
+                                <label for="student-id-input">Student ID <span class="note">(Generated if left blank)</label>
+                                <input type="text" name="student_id" id="student-id-input" placeholder="Enter ID">
+                            <?php endif; ?>
+                            
+                            <label for="name-input">Name <span class="required">*</span></label>
+                            <input type="text" name="name" id="name-input" value="<?php echo htmlspecialchars($row['Name']); ?>" placeholder="Enter student name" required>
+                            
+                            <label for="age-input">Age <span class="required">*</span></label>
+                            <input type="number" name="age" id="age-input" value="<?php echo htmlspecialchars($row['Age']); ?>" min="0" max="99" placeholder="Enter student age (0-99)" required>
+                            
+                            <label for="email-input">E-mail <span class="required">*</span></label>
+                            <input type="email" name="email" id="email-input" value="<?php echo htmlspecialchars($row['Email']); ?>" placeholder="Enter student e-mail" required>
+                            <p class="note">Must be a valid e-mail address (max 40 characters).</p>
                         </div>
-                        <div id="preview"></div>
                         
+                        <!-- ACADEMIC INFORMATION -->
+                        <div id="academic-info-panel" class="gen-sections">
+                            <h3>Academic Information</h3>
+                            <label for="course-select">Course <span class="required">*</span></label>
+                            <select id="course-select" name="course" required>
+                                <option value="COMPUTER SCIENCE" <?php echo ($row['Course'] == 'COMPUTER SCIENCE') ? 'selected' : ''; ?>>COMPUTER SCIENCE</option>
+                                <option value="MICROBIOLOGY" <?php echo ($row['Course'] == 'MICROBIOLOGY') ? 'selected' : ''; ?>>MICROBIOLOGY</option>
+                                <option value="COMPUH TER ENGINEERING" <?php echo ($row['Course'] == 'COMPUH TER ENGINEERING') ? 'selected' : ''; ?>>COMPUH TER ENGINEERING</option>
+                            </select>
+                            
+                            <label for="year-level-select">Year Level <span class="required">*</span></label>
+                            <select id="year-level-select" name="year_level" required>
+                                <option value="1" <?php echo ($row['Year_level'] == '1') ? 'selected' : ''; ?>>1</option>
+                                <option value="2" <?php echo ($row['Year_level'] == '2') ? 'selected' : ''; ?>>2</option>
+                                <option value="3" <?php echo ($row['Year_level'] == '3') ? 'selected' : ''; ?>>3</option>
+                                <option value="4" <?php echo ($row['Year_level'] == '4') ? 'selected' : ''; ?>>4</option>
+                                <option value="Nth" <?php echo ($row['Year_level'] == 'Nth') ? 'selected' : ''; ?>>Nth</option>
+                            </select>
+                            
+                            <p>Graduating this year? (leave unchecked if not)<span class="required">*</span>
+                                <input type="checkbox" id="grad-status-input" name="graduation_status">
+                            </p>
+                        </div>
+                        
+                        
+                        <!-- PROFILE PHOTO -->
+                        <div id="profile-photo-section" class="form-sections">
+                            <h3>Profile Photo <span class="required">*</span></h3>
+                            <div id="drop-area">
+                                <p>Drag and drop an image here, or click to select a file.</p>
+                                <input id="image-drop-inp" type="file" name="profile_photo" accept="image/*" required>
+                            </div>
+                            <div id="preview"></div>
+                            
+                        </div>
+                        
+                        <br/>
+                        <button type="submit" name="action" value="insert" class="submit-btn">Submit</button>
+                        <br/>
                     </div>
-                    
-                    <br/>
-                    <button type="submit" name="action" value="insert" class="submit-btn">Submit</button>
-                    <br/>
-                </div>
                 </form>
 
             <!-- END OF STUDENT REGISTRATION FORM -->
