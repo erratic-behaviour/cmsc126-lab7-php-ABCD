@@ -22,11 +22,13 @@
     // SEARCH LOGIC
     if (isset($_GET['search']) && !empty($_GET['search'])) {
         $search_id = $conn -> real_escape_string($_GET['search']);
+        // query for searching students
         $sql = "SELECT * FROM top_level t
                 INNER JOIN lower_level l ON t.Student_id = l.Student_id
                 WHERE t.Student_id = 'search_id'";
         $result = $conn -> query($sql);
 
+        // if student already exists
         if ($data = $result -> fetch_assoc()) {
             $row = $data;
             $is_update = true;
@@ -69,14 +71,17 @@
                         <div id="personal-info-section" class="gen-sections">
                             <h3>Personal Information</h3>
                             
+                            <!-- shows up if student data is being updated -->
                             <?php if ($is_update): ?>
                                 <label>Student ID: <strong><?php echo $row['Student_id']; ?></strong></label>
                                 <input type="hidden" name="student_id" value="<?php echo $row['Student_id']; ?>">
-                            <?php else: ?>
-                                <label for="student-id-input">Student ID <span class="note">(Generated if left blank)</label>
-                                <input type="text" name="student_id" id="student-id-input" placeholder="Enter ID">
-                            <?php endif; ?>
-                            
+                                <?php else: ?>
+                                    <label for="student-id-input">Student ID <span class="note">(Generated if left blank)</label>
+                                    <input type="text" name="student_id" id="student-id-input" placeholder="Enter ID">
+                                    <?php endif; ?>
+                                    
+                                    
+                            <!-- main collection block -->
                             <label for="name-input">Name <span class="required">*</span></label>
                             <input type="text" name="name" id="name-input" value="<?php echo htmlspecialchars($row['Name']); ?>" placeholder="Enter student name" required>
                             
@@ -93,6 +98,7 @@
                             <h3>Academic Information</h3>
                             <label for="course-select">Course <span class="required">*</span></label>
                             <select id="course-select" name="course" required>
+                                <!-- simple select/unselect logic inside <option> tag -->
                                 <option value="COMPUTER SCIENCE" <?php echo ($row['Course'] == 'COMPUTER SCIENCE') ? 'selected' : ''; ?>>COMPUTER SCIENCE</option>
                                 <option value="MICROBIOLOGY" <?php echo ($row['Course'] == 'MICROBIOLOGY') ? 'selected' : ''; ?>>MICROBIOLOGY</option>
                                 <option value="COMPUH TER ENGINEERING" <?php echo ($row['Course'] == 'COMPUH TER ENGINEERING') ? 'selected' : ''; ?>>COMPUH TER ENGINEERING</option>
@@ -130,10 +136,13 @@
                         
                         <!-- ACTION BUTTONS -->
                         <div class="gen-sections">
+                            <!-- dynamic buttons depending on edit more -->
                             <button type="submit" name="action" value="<?php echo $is_update ? 'update' : 'insert'; ?>" class="submit-btn">
                                 <?php echo $is_update ? "Update Student" : "Submit Registration"; ?>
                             </button>
-
+                            
+                            
+                            <!-- button for deletion -->
                             <?php if($is_update): ?>
                                 <button type="submit" name="action" value="delete" class="return-btn" onclick="return confirm('Delete this student?')">Delete Record</button>
                                 <a href="index.php">Cancel & Add New</a>
@@ -153,6 +162,7 @@
                     <h2>Search Student</h2>
                 </div>
 
+                <!-- main search block -->
                 <div id="search-student-body" class="gen-sections">
                     <form method="GET" action = "index.php">
                         <label for="student-number">Search Student Number:</label>
