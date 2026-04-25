@@ -118,15 +118,27 @@
                             <h3>Profile Photo <span class="required">*</span></h3>
                             <div id="drop-area">
                                 <p>Drag and drop an image here, or click to select a file.</p>
-                                <input id="image-drop-inp" type="file" name="profile_photo" accept="image/*" required>
+                                <input id="image-drop-inp" type="file" name="profile_photo" accept="image/*" <?php echo !$is_update ?> required>
                             </div>
-                            <div id="preview"></div>
-                            
+                            <div id="preview">
+                                <?php if($row['Image']): ?>
+                                    <p>Current:</p>
+                                    <img src="<?php echo $row['Image']; ?>" class="preview-img">
+                                <?php endif; ?>
+                            </div>
                         </div>
                         
-                        <br/>
-                        <button type="submit" name="action" value="insert" class="submit-btn">Submit</button>
-                        <br/>
+                        <!-- ACTION BUTTONS -->
+                        <div class="gen-sections">
+                            <button type="submit" name="action" value="<?php echo $is_update ? 'update' : 'insert'; ?>" class="submit-btn">
+                                <?php echo $is_update ? "Update Student" : "Submit Registration"; ?>
+                            </button>
+
+                            <?php if($is_update): ?>
+                                <button type="submit" name="action" value="delete" class="return-btn" onclick="return confirm('Delete this student?')">Delete Record</button>
+                                <a href="index.php">Cancel & Add New</a>
+                            <?php endif; ?>
+                        </div>
                     </div>
                 </form>
 
@@ -134,7 +146,7 @@
             </div>
 
             
-            <!-- SEARCH STUDENT -->
+            <!-- RIGHT COLUMN: SEARCH STUDENT -->
             <div id="search-container" class="containers">
                 <!-- SEARcH HEADER -->
                 <div class="container-header">
