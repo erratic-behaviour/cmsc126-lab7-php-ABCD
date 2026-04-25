@@ -148,21 +148,19 @@
             
             <!-- RIGHT COLUMN: SEARCH STUDENT -->
             <div id="search-container" class="containers">
-                <!-- SEARcH HEADER -->
+                <!-- SEARCH HEADER -->
                 <div class="container-header">
                     <h2>Search Student</h2>
                 </div>
 
                 <div id="search-student-body" class="gen-sections">
-                    <form method="GET" action = "search_studentID.php">
+                    <form method="GET" action = "index.php">
                         <label for="student-number">Search Student Number:</label>
-                        <input type="text" name="search" id="student-number" placeholder="Enter student number">
-                        <button type="submit">Search</button>
+                        <input type="text" name="search" id="student-number" placeholder="Enter ID to search">
+                        <button type="submit" class="return-btn">Find Student</button>
                     </form>
                 </div>
-
             </div>
-        
         </main>
         <?php
             ob_start();
