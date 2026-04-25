@@ -22,7 +22,7 @@ if (isset($_GET['search'])) {
 
     ob_start();
     if ($row = $result->fetch_assoc()) {
-        echo "working";
+        echo "search working";
     } else {
         echo json_encode(["status" => "not_found"]);
     }
