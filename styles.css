@@ -44,7 +44,7 @@ main {
 }
 
 .container-header {
-    background: rgb(108, 25, 25);
+    background: crimson;
     color: rgb(255, 242, 219);
     padding: 12px 16px;
     font-size: 13px;
@@ -58,13 +58,8 @@ main {
     flex-direction: column;
 }
 
-#form-header  {
-    background: rgb(203, 19, 43);
-    color: rgb(240, 230, 212);
-}
-
 #completed {
-    background: rgb(203, 19, 43);
+    background: crimson;
     color: rgb(240, 230, 212);
     padding: 20px;
     text-align: center;
@@ -83,7 +78,7 @@ main {
 }
 
 .submit-btn {
-    background: rgb(203, 19, 43);
+    background: crimson;
     color: rgb(240, 230, 212);
     border: none;
     padding: 10px;
