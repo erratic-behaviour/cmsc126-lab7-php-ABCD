@@ -11,8 +11,17 @@ body {
     font-optical-sizing: auto;
     font-weight: 100;
     font-style: normal;
-    background: rgb(223, 223, 223);
+    background: white;
     margin: 0;
+}
+
+h3, label {
+    color: rgb(3, 66, 31);
+}
+
+#form-body p {
+    color: black;
+    padding: 2px 4px;
 }
 
 main {
@@ -31,6 +40,7 @@ main {
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+    margin: 2.5px;
 }
 
 #form-container {
@@ -44,12 +54,22 @@ main {
 }
 
 .container-header {
-    background: crimson;
-    color: rgb(255, 242, 219);
+    background: rgb(118, 15, 18);
+    color: white;
     padding: 12px 16px;
     font-size: 13px;
     font-weight: 600;
     flex-shrink: 0;
+}
+
+#name-input, #age-input, #email-input, #course-select, 
+#year-level-select, #student-id-input, #student-number {
+    margin-bottom: 3px;
+    padding: 5px 5px;
+    box-sixing: border-box;
+    border-radius: 10px;
+    border-color: rgb(3, 66, 31);
+    border-width: 1px;
 }
 
 .gen-sections {
@@ -59,16 +79,17 @@ main {
 }
 
 #completed {
-    background: crimson;
-    color: rgb(240, 230, 212);
+    background: rgb(118, 15, 18);
+    color: rgb(118, 15, 18);
     padding: 20px;
     text-align: center;
 } 
 
 
 #drop-area {
-    border: 3px dashed #777171;
+    border: 2.5px dashed #777171;
     padding: 50px;
+    margin: 0 10px;
     text-align: center;
     cursor: pointer;
 }
@@ -77,9 +98,13 @@ main {
     color: crimson;
 }
 
+button {
+    border-radius: 8px;
+}
+
 .submit-btn {
-    background: crimson;
-    color: rgb(240, 230, 212);
+    background: rgb(118, 15, 18);
+    color: white;
     border: none;
     padding: 10px;
     font-size: 16px;
@@ -92,8 +117,8 @@ main {
 
 
 .return-btn {
-    background: crimson;
-    color: rgb(240, 230, 212);
+    background: rgb(118, 15, 18);
+    color: white;
     border: none;
     padding: 10px;
     font-size: 16px;
