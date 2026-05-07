@@ -6,5 +6,9 @@ RUN docker-php-ext-install mysqli
 
 COPY . /var/www/html/
 
+# Create uploads folder with write permissions for Apache
+RUN mkdir -p /var/www/html/uploads && chmod 755 /var/www/html/uploads
+RUN chown -R www-data:www-data /var/www/html
+
 EXPOSE 80
 CMD ["apache2-foreground"]

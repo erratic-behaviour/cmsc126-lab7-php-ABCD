@@ -54,6 +54,5 @@
     } else {
         echo "Error creating table: " . $conn->error. "<br/>";
     }
-    // Close the connection
-    $conn->close();
+    // Connection stays open for the rest of the application
 ?>
