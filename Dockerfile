@@ -12,7 +12,7 @@ WORKDIR /var/www/html
 COPY . .
 
 # Install PHP dependencies
-RUN until composer install --no-dev --optimize-autoloader --no-interaction; do echo "Retrying..."; sleep 5; done
+RUN until composer install --optimize-autoloader --no-interaction; do echo "Retrying..."; sleep 5; done
 
 EXPOSE 80
 CMD ["apache2-foreground"]
