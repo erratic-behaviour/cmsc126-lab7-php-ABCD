@@ -1,19 +1,13 @@
 <?php
 
-    require_once __DIR__ . '/vendor/autoload.php';
-
-    use Dotenv\Dotenv;
-
-    // Load .env only if it exists (for local development)
-    $dotenv = Dotenv::createImmutable(__DIR__);
-    $dotenv->safeLoad();
-
-    // Get from environment variables (Render sets these in dashboard)
-    $servername = $_ENV["db_host"] ?? getenv("db_host") ?? "localhost";
-    $username = $_ENV["db_user"] ?? getenv("db_user") ?? "root";
-    $password = $_ENV["db_pass"] ?? getenv("db_pass") ?? "";
-    $dbname = $_ENV["db_name"] ?? getenv("db_name") ?? "lab_7";
-    $dbport = $_ENV["db_port"] ?? getenv("db_port") ?? 3306;
+    // Get database credentials from environment variables (Render sets these)
+    // Fall back to localhost for local development
+    $servername = getenv("db_host") ?: "localhost";
+    $username = getenv("db_user") ?: "root";
+    $password = getenv("db_pass") ?: "";
+    $dbname = getenv("db_name") ?: "lab_7";
+    $dbport = getenv("db_port") ?: 3306;
+    
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname, $dbport);
 
