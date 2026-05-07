@@ -1,9 +1,19 @@
 <?php
-    $servername = "localhost"; // Name of the server
-    $username = "root";
-    $password = "";
+
+    require_once __DIR__ . './vendor/autoload.php';
+
+    use Dotenv\Dotenv;
+
+    $dotenv = Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
+
+    $servername = $_ENV("db_host"); // Name of the server
+    $username = $_ENV("db_user"); // user
+    $password = $_ENV("db_pass"); // poassword
+    $dbname = $_ENV("db_name");  // db name
+    $dbport = $_ENV("db_port"); // port
     // Create connection
-    $conn = new mysqli($servername, $username, $password);
+    $conn = new mysqli($servername, $username, $password, $dbname, $dbport);
 
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
