@@ -2,12 +2,7 @@
     // FILENAME: update_feature.php
     // Handles the updating logic of the system
 
-    // connecting to database
-    $conn = new mysqli("localhost", "root", "", "lab_7");
-
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+    include 'initializedb.php';
     
     //text_value changes text depending if it was a deletion or update
     $text_value = null;
