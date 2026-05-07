@@ -5,14 +5,15 @@ RUN apt-get update && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-install mysqli
 
-#gets composer 
+# gets composer 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 COPY . /var/www/html/
 
 WORKDIR /var/www/html
 
-RUN composer install
+ENV COMPOSER_ALLOW_SUPERUSER=1
+RUN composer install --no-interaction --no-dev --optimize-autoloader
 
 EXPOSE 80
 CMD ["apache2-foreground"]
