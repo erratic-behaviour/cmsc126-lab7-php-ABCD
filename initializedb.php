@@ -4,14 +4,16 @@
 
     use Dotenv\Dotenv;
 
+    // Load .env only if it exists (for local development)
     $dotenv = Dotenv::createImmutable(__DIR__);
-    $dotenv->load();
+    $dotenv->safeLoad();
 
-    $servername = $_ENV["db_host"]; // Name of the server
-    $username = $_ENV["db_user"]; // user
-    $password = $_ENV["db_pass"]; // poassword
-    $dbname = $_ENV["db_name"];  // db name
-    $dbport = $_ENV["db_port"]; // port
+    // Get from environment variables (Render sets these in dashboard)
+    $servername = $_ENV["db_host"] ?? getenv("db_host") ?? "localhost";
+    $username = $_ENV["db_user"] ?? getenv("db_user") ?? "root";
+    $password = $_ENV["db_pass"] ?? getenv("db_pass") ?? "";
+    $dbname = $_ENV["db_name"] ?? getenv("db_name") ?? "lab_7";
+    $dbport = $_ENV["db_port"] ?? getenv("db_port") ?? 3306;
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname, $dbport);
 
