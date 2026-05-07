@@ -15,12 +15,12 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    echo "Connected successfully!" . "<br/>";
+    #echo "Connected successfully!" . "<br/>";
 
     // Create database
     $sql = "CREATE DATABASE IF NOT EXISTS lab_7";
     if ($conn->query($sql) === TRUE) {
-        echo "Database created successfully (or already exists!)" . "<br/>";
+        #echo "Database created successfully (or already exists!)" . "<br/>";
     } else {
         echo "Error creating database: " . $conn->error . "<br/>";
     }
@@ -44,13 +44,13 @@
     )";
 
     if ($conn->query($top_level) === TRUE) {
-        echo "Top level table created successfully". "<br/>";
+        #echo "Top level table created successfully". "<br/>";
     } else {
         echo "Error creating table: " . $conn->error. "<br/>";
     }
 
     if ($conn->query($lower_level) === TRUE) {
-        echo "Lower level table created successfully". "<br/>";
+        #echo "Lower level table created successfully". "<br/>";
     } else {
         echo "Error creating table: " . $conn->error. "<br/>";
     }
