@@ -2,11 +2,7 @@
 // FILENAME : search_studentID.php
 // searches for a student by their ID and displays their information 
 
-$conn = new mysqli("localhost", "root", "", "lab_7");
-
-if ($conn->connect_error) {
-    die("Connection failed");
-}
+include 'initializedb.php';
 
 if (isset($_GET['search'])) {
     $student_number = $_GET['search'];

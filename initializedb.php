@@ -7,11 +7,11 @@
     $dotenv = Dotenv::createImmutable(__DIR__);
     $dotenv->load();
 
-    $servername = $_ENV("db_host"); // Name of the server
-    $username = $_ENV("db_user"); // user
-    $password = $_ENV("db_pass"); // poassword
-    $dbname = $_ENV("db_name");  // db name
-    $dbport = $_ENV("db_port"); // port
+    $servername = $_ENV["db_host"]; // Name of the server
+    $username = $_ENV["db_user"]; // user
+    $password = $_ENV["db_pass"]; // poassword
+    $dbname = $_ENV["db_name"];  // db name
+    $dbport = $_ENV["db_port"]; // port
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname, $dbport);
 

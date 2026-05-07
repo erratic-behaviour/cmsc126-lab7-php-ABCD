@@ -1,14 +1,7 @@
 <?php
 // FILENAME: index.php
 
-$conn = new mysqli("localhost", "root", "", "lab_7");
-// address, username, password, database name
-
-// if connection fails
-if ($conn->connect_error) {
-    include 'initializedb.php';
-    $conn = new mysqli("localhost", "root", "", "lab_7");
-}
+include 'initializedb.php';
 
 // initialize states (defualt for blank forms)
 $row = [

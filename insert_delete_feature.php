@@ -2,12 +2,7 @@
 <?php
     // FILENAME: insert_delete_feature.php
     
-    $conn = new mysqli("localhost", "root", "", "lab_7");
-
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-
-    }
+    include 'initializedb.php';
 
     $update_delete = null;
 
