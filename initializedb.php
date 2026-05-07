@@ -2,11 +2,11 @@
 
     // Get database credentials from environment variables (Render sets these)
     // Fall back to localhost for local development
-    $servername = getenv("db_host") ?: "localhost";
-    $username = getenv("db_user") ?: "root";
-    $password = getenv("db_pass") ?: "";
-    $dbname = getenv("db_name") ?: "lab_7";
-    $dbport = getenv("db_port") ?: 3306;
+    $servername = getenv("db_host");
+    $username = getenv("db_user");
+    $dbname = getenv("db_name");
+    $dbport = getenv("db_port");
+    $password = getenv("db_pass");
     
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname, $dbport);
